@@ -19,3 +19,15 @@ np.random.seed(seed_value)
 
 # to ignore warnings
 warnings.filterwarnings('ignore')
+
+# Function to separate first n words
+def get_first_n_words(text, n=1000):
+    words = text.split()
+    first_n_words = words[:n]
+    return " ".join(first_n_words)
+
+
+# Get words count
+def get_words_count(text):
+    words = text.split()
+    return len(words)
