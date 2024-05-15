@@ -66,3 +66,8 @@ content = re.sub(pattern, " ", content)
 print("\n\n--------------------------------------------\n\n", end="")
 print("Corpus Length(After Preprocess): ", len(content), "chars /", str(get_words_count(content)), "words", end="")
 print("\n\n--------------------------------------------\n\n", end="")
+
+# Show Text
+print("\n\n--------------------------------------------\n\n", end="")
+print("Text: \n", content, end="")
+print("\n\n--------------------------------------------\n\n", end="")
