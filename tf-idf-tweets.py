@@ -23,3 +23,22 @@ np.random.seed(seed_value)
 
 # to ignore warnings
 warnings.filterwarnings('ignore')
+
+# Read Data
+content = pd.read_csv("dataset/Tweets/data.csv")
+print("\n\n--------------------------------------------\n\n", end="")
+print("Corpus Length(Original): ", len(content))
+print(content.head())
+print(content.tail())
+print("\n\n--------------------------------------------\n\n", end="")
+
+# First n first tweets
+tweets_count = 1000
+content = content[:tweets_count]
+content = content.drop(
+    ["tweet_id", "author_id", "inbound", "created_at", "response_tweet_id", "in_response_to_tweet_id"], axis=1)
+print("\n\n--------------------------------------------\n\n", end="")
+print("Corpus Length(N Tweets and Only Text Column): ", len(content))
+print(content.head())
+print(content.tail())
+print("\n\n--------------------------------------------\n\n", end="")
