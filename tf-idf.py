@@ -46,3 +46,23 @@ content = get_first_n_words(content, n_words)
 print("\n\n--------------------------------------------\n\n", end="")
 print("Corpus Length(N Words): ", len(content), "chars /", str(get_words_count(content)), "words", end="")
 print("\n\n--------------------------------------------\n\n", end="")
+
+# Preprocess Steps
+# Lowercase
+content = content.lower()
+
+# Punctuations Removal
+pattern = r'[^\w\s]'
+content = re.sub(pattern, "", content)
+
+# Numbers Removal
+pattern = r'[\d]'
+content = re.sub(pattern, "", content)
+
+# More Than 1 Space Removal
+pattern = r'\s{2,}'
+content = re.sub(pattern, " ", content)
+
+print("\n\n--------------------------------------------\n\n", end="")
+print("Corpus Length(After Preprocess): ", len(content), "chars /", str(get_words_count(content)), "words", end="")
+print("\n\n--------------------------------------------\n\n", end="")
