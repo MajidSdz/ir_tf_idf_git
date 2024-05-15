@@ -31,3 +31,18 @@ def get_first_n_words(text, n=1000):
 def get_words_count(text):
     words = text.split()
     return len(words)
+
+# Read Data
+file = open('dataset/SciFi/data.txt', 'r')
+content = file.read()
+file.close()
+print("\n\n--------------------------------------------\n\n", end="")
+print("Corpus Length(Original): ", len(content), "chars /", str(get_words_count(content)), "words", end="")
+print("\n\n--------------------------------------------\n\n", end="")
+
+# First n words for new content
+n_words = 1000
+content = get_first_n_words(content, n_words)
+print("\n\n--------------------------------------------\n\n", end="")
+print("Corpus Length(N Words): ", len(content), "chars /", str(get_words_count(content)), "words", end="")
+print("\n\n--------------------------------------------\n\n", end="")
