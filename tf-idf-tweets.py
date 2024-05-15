@@ -42,3 +42,29 @@ print("Corpus Length(N Tweets and Only Text Column): ", len(content))
 print(content.head())
 print(content.tail())
 print("\n\n--------------------------------------------\n\n", end="")
+
+# Preprocess Steps
+# Lowercase
+content["text"] = content["text"].apply(lambda x: x.lower())
+
+# Stopword Removal
+stop = stopwords.words('english')
+content['text'] = content['text'].apply(lambda x: ' '.join([word for word in x.split() if word not in stop]))
+
+# Punctuations Removal
+pattern = r'[^\w\s]'
+content["text"] = content['text'].str.replace(pattern, '', regex=True)
+
+# Numbers Removal
+pattern = r'[\d]'
+content["text"] = content['text'].str.replace(pattern, '', regex=True)
+
+# More Than 1 Space Removal
+pattern = r'\s{2,}'
+content["text"] = content['text'].str.replace(pattern, ' ', regex=True)
+
+print("\n\n--------------------------------------------\n\n", end="")
+print("Corpus Length(After Preprocess): ", len(content))
+print(content.head())
+print(content.tail())
+print("\n\n--------------------------------------------\n\n", end="")
