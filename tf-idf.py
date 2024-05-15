@@ -71,3 +71,21 @@ print("\n\n--------------------------------------------\n\n", end="")
 print("\n\n--------------------------------------------\n\n", end="")
 print("Text: \n", content, end="")
 print("\n\n--------------------------------------------\n\n", end="")
+
+# TF-IDF
+corpus = [content]  # Convert content to a list (single document)
+
+vectorizer = TfidfVectorizer()  # TF-IDF object
+vectorizer.fit(corpus)  # Fit according to corpus
+
+tfidf_matrix = vectorizer.transform(corpus)  # Apply tf-idf to corpus and put results in tfidf_matrix
+
+feature_names = vectorizer.get_feature_names_out()  # Features names list
+tfidf_matrix_arr = tfidf_matrix.toarray()  # Array of tf-idf
+
+tfidf_df = pd.DataFrame(tfidf_matrix_arr, columns=feature_names)  # Convert to Dataframe
+tfidf_df.to_csv("results/tfidf.csv", index=False)
+
+print("\n\n--------------------------------------------\n\n", end="")
+print("TF-IDF Saved to CSV: \n", tfidf_df, end="")
+print("\n\n--------------------------------------------\n\n", end="")
